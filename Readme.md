@@ -27,3 +27,13 @@ jsx 的支持是通过 vite 的转化把 jsx 转成 React.createElement
 ### requestIdleCallback
 
 requestIdleCallback 函数接收一个回调函数，会传递一个 deadline 对象，可以调用 timeRemaining()拿到剩余时间
+
+### 统一提交节点
+
+因为 requestIdleCallback 会有时间不够的情况，所以在 append 的时候可能有执行不全的时候，边转链表边 append 改为所有节点都转完链表最后提交一次 dom
+判断条件为下一个任务为空且 root 任务存在，执行一次后 root 设为 null
+
+### 支持 function component
+
+function component
+![Alt text](image.png)
